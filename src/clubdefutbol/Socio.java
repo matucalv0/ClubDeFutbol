@@ -1,9 +1,14 @@
 package clubdefutbol;
 
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
-import clubdefutbol.Suscripciones;
+import suscripciones.Basica;
+import suscripciones.Destacada;
+import suscripciones.Intermedia;
+import suscripciones.Suscripcion;
 
 
 /*
@@ -16,33 +21,80 @@ import clubdefutbol.Suscripciones;
  * @author matuc
  */
 class Socio {
+    private LocalDate fechaInscripcion;
     private String nombre;
-    private LocalTime fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String email;
     private String direccion;
-    private Enum suscripcion;
-    private List<String> credencial;
+    private Suscripcion suscripcion;
+    private List<Object> credencial = new ArrayList<>();
+
+   
     
     
-    public Socio(String nombre, LocalTime fechaNacimiento, String email, String direccion){
+    public Socio(String nombre, LocalDate fechaNacimiento, String email, String direccion, int opcionSuscripcion){
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.email = email;
         this.direccion = direccion;
+        this.fechaInscripcion = LocalDate.now();
+        setSuscripcion(opcionSuscripcion);
         setCredencial();
     }
     
-    public setSuscripcion(int numero){
-        this.suscripcion = Suscripciones.
-    }
     
+    public void setSuscripcion(int opcion){
+        switch (opcion) {
+            case 1:
+                this.suscripcion = new Basica();
+                break;
+            case 2:
+                this.suscripcion = new Intermedia();
+                break;
+            case 3:
+                this.suscripcion = new Destacada();
+        
+        }
+        
+    }
     
     public void setCredencial(){
         credencial.add(nombre);
-        credencial.add(fechaNacimiento.toString());
+        credencial.add(fechaNacimiento);
         credencial.add(email);
         credencial.add(direccion);
+        credencial.add(suscripcion);
     }
+    
+     public LocalDate getFechaInscripcion() {
+        return fechaInscripcion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Suscripcion getSuscripcion() {
+        return suscripcion;
+    }
+
+    public List<Object> getCredencial() {
+        return credencial;
+    }
+    
+    
     
     
     
