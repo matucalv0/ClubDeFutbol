@@ -28,7 +28,9 @@ public class Club {
                 System.out.println(socio.getNombre());
             }
         
-            System.out.println("Nuevos socios este mes: " + contador);    
+       
+            
+        System.out.println("Nuevos socios este mes: " + contador);    
             
         }
     }

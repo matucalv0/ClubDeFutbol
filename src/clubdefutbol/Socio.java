@@ -27,6 +27,7 @@ class Socio {
     private String email;
     private String direccion;
     private Suscripcion suscripcion;
+    private int dni;
     private List<Object> credencial = new ArrayList<>();
 
    
@@ -40,6 +41,14 @@ class Socio {
         this.fechaInscripcion = LocalDate.now();
         setSuscripcion(opcionSuscripcion);
         setCredencial();
+    }
+    
+    public Socio(String nombre, LocalDate fechaNacimiento, int dni, LocalDate fechaInscripcion){
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.dni = dni;
+        this.fechaInscripcion = fechaInscripcion;
+        
     }
     
     
